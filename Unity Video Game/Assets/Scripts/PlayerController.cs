@@ -8,21 +8,29 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     public float jumpForce;
     public float gravityModifier;
-    private Animator playerAnim;
+    public float moveSpeed;
+    public float forwardInput;
+    public bool isOnGround;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
-        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        forwardInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.forward * forwardInput * moveSpeed);
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            playerAnim.SetTrigger("Jump_AR_Anim");
+            isOnGround = false;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        isOnGround = true;
+    }
 }
+    
