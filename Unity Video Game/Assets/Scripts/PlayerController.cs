@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float forwardInput;
     public bool isOnGround;
+    public GameObject projectilePrefab;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -27,7 +28,13 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         isOnGround = true;
