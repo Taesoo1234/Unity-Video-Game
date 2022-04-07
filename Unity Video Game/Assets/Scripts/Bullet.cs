@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 
+    // destroy anything this touches, and delete itself as well
     void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);

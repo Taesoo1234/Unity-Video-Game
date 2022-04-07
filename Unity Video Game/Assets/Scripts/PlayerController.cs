@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //move left or right when pressing left arrow or right arrow
         forwardInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.forward * forwardInput * moveSpeed);
+
+        // code to allow the character to jump when pressing space, as well as preventing double jumps
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //checks if the character is on the ground
     private void OnCollisionEnter(Collision collision)
     {
         isOnGround = true;
