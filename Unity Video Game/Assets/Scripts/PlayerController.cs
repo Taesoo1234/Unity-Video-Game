@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float forwardInput;
     public bool isOnGround;
     public GameObject projectilePrefab;
+    public bool gameOver = false;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -31,17 +32,29 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
+        // code to make the player shoot when pressing Z
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+
+            Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.forward * 1.15f), projectilePrefab.transform.rotation);
         }
     }
 
     //checks if the character is on the ground
     private void OnCollisionEnter(Collision collision)
     {
-        isOnGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        //checks if the character is touching an enemy, and kills the player if it is
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Game Over");
+            gameOver = true;
+            Destroy(gameObject);
+        }
+
     }
 }
     
