@@ -22,8 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //makes the player constantly move right
-        transform.Translate(Vector3.forward * moveSpeed);
+        
         
 
         // code to allow the character to jump when pressing space, as well as preventing double jumps
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
 
-            Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.forward * 1.15f), projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation);
         }
     }
 

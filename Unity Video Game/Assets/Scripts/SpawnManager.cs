@@ -17,9 +17,9 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 GenerateSpawnPosition ()
     {
-        float spawnPosZ = Random.Range(MinHorizontalSpawnRange, MaxHorizontalSpawnRange);
+        float spawnPosX = Random.Range(MinHorizontalSpawnRange, MaxHorizontalSpawnRange);
         float spawnPosY = Random.Range(MinVerticalSpawnRange, MaxVerticalSpawnRange);
-        Vector3 randomPos = new Vector3(0, spawnPosY, spawnPosZ);
+        Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, 0);
         return randomPos;
     }
     // Update is called once per frame
