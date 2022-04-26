@@ -14,7 +14,13 @@ public class GroundMove : MonoBehaviour
     void Update()
     {
         // makes the enemy move right
-        transform.Translate(Vector3.forward * Speed);
+        transform.Translate(Vector3.left * Speed) ;
+
+        // deletes anything that goes too far left
+        if (transform.position.x < -100)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 
