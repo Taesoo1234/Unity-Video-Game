@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeSpawn : MonoBehaviour
 {
     public GameObject[] TreePrefabs;
-    public float startDelay = 1;
+    public float startDelay = 2;
     public float spawnInterval = 1.5f;
     // Start is called before the first frame update
     void Start()
