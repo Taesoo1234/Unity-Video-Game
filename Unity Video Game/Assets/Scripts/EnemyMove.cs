@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public float speed;
+    public float platformspeed;
+    public bool isOnPlatform;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,23 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         // move left
-        transform.Translate(Vector3.forward * speed);
+        if (isOnPlatform = true)
+        {
+            transform.Translate(Vector3.forward * platformspeed);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * speed);
+        }
+       
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isOnPlatform = true;
+        }
+    }
+    
 }

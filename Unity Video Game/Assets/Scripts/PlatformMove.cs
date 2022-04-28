@@ -16,5 +16,11 @@ public class PlatformMove : MonoBehaviour
     {
         // makes the platform move left (platform rotation is 180)
         transform.Translate(Vector3.right * Speed);
+
+        // deletes anything that goes too far left
+        if (transform.position.x < -25)
+        {
+            Destroy(gameObject);
+        }
     }
 }

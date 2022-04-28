@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isOnGround = true;
+        }
         //checks if the character is touching an enemy, and kills the player if it is
         else if (collision.gameObject.CompareTag("Enemy"))
         {

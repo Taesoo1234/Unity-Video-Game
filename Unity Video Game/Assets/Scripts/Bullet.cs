@@ -26,7 +26,14 @@ public class Bullet : MonoBehaviour
     // destroy anything this touches, and delete itself as well
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.CompareTag("Target"))
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
