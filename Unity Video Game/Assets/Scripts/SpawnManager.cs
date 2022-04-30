@@ -7,12 +7,13 @@ public class SpawnManager : MonoBehaviour
     public float MinVerticalSpawnRange = 0;
     public float MaxVerticalSpawnRange = 10;
     public GameObject[] enemyPrefabs;
-    public float startDelay = 2;
+    public float MinSpawnDelay = 2;
+    public float MaxSpawnDelay = 4;
     public float spawnInterval = 3.5f;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomEnemy", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomEnemy", GenerateSpawnDelay(), spawnInterval);
     }
 
     private Vector3 GenerateSpawnPosition ()
@@ -20,6 +21,12 @@ public class SpawnManager : MonoBehaviour
         float spawnPosY = Random.Range(MinVerticalSpawnRange, MaxVerticalSpawnRange);
         Vector3 randomPos = new Vector3(17, spawnPosY, 0);
         return randomPos;
+    }
+
+    private float GenerateSpawnDelay()
+    {
+        float SpawnDelay = Random.Range(MinSpawnDelay, MaxSpawnDelay);
+        return SpawnDelay;
     }
     void SpawnRandomEnemy()
     {

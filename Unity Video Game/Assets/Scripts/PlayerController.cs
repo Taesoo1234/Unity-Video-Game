@@ -13,10 +13,13 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround;
     public GameObject projectilePrefab;
     public bool gameOver = false;
+    public bool hasPowerup = false;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+        gameOver = false;
+        hasPowerup = false;
     }
 
     // Update is called once per frame
@@ -37,16 +40,33 @@ public class PlayerController : MonoBehaviour
 
             Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation);
         }
+        // code that makes the player move offscreen after touching an enemy
+        if (gameOver = true)
+        {
+        
+        }
+
+        // checks if the player has touched a powerup, and grants them increased jump height if they have
+        if (hasPowerup = true)
+        {
+            jumpForce = 750;
+        }
+        else
+        {
+            jumpForce = 600;
+        }
     }
 
     //checks if the character is on the ground
     private void OnCollisionEnter(Collision collision)
     {
+        // checks if the character is on the ground to let them jump
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
 
+        // checks if the character is on a platform to let them jump
         if (collision.gameObject.CompareTag("Platform"))
         {
             isOnGround = true;
@@ -56,9 +76,27 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
-            Destroy(gameObject);
         }
 
+        //checks if the player is touching a target, and kills the player if they are
+        else if (collision.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("Game Over");
+            gameOver = true;
+        }
+
+        if (collision.gameObject.CompareTag("Powerup"))
+        {
+            hasPowerup = true;
+            Destroy(other.gameObject);
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        hasPowerup = false;
     }
 }
     

@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 
         // destroys the bullet after going far right enough
-        if (transform.position.x > 50)
+        if (transform.position.x > 16)
         {
             Destroy(gameObject);
         }
