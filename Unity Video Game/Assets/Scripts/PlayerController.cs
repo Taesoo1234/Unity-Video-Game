@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
