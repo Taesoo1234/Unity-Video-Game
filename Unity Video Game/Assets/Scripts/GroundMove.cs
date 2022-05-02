@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GroundMove : MonoBehaviour
 {
-    public float Speed;
+    // the speed of the object
+    public float speed;
     void Start()
     {
         
@@ -13,12 +14,13 @@ public class GroundMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // makes the enemy move right
-        transform.Translate(Vector3.left * Speed) ;
+        // makes the enemy move right, velcoity is determined by the speed variable
+        transform.Translate(Vector3.left * speed) ;
 
-        // deletes anything that goes too far left
+        // checks if the object has moved very far to the left, specifically past x = 100
         if (transform.position.x < -100)
         {
+            // if yes, destroy the object
             Destroy(gameObject);
         }
     }

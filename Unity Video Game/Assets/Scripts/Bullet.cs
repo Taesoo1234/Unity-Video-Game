@@ -16,25 +16,30 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // makes the bullet go right (up is after rotating the bullet)
+        // The velocity is determined by the time and the speed
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 
-        // destroys the bullet after going far right enough
+        // destroys the bullet after the position is transformed enough that it goes past x = 16 (aka right)
         if (transform.position.x > 16)
         {
             Destroy(gameObject);
         }
     }
 
-    // destroy anything this touches, and delete itself as well
+    // checks for collisions
     void OnTriggerEnter(Collider other)
     {
+        // checks upon collision if the target has a tag called 'target'
         if (other.CompareTag("Target"))
         {
+            // if yes, destroys the target and destroys the bullet
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
         else
         {
+            // if no, destroy the bullet and do nothing else
             Destroy(gameObject);
         }
     }
