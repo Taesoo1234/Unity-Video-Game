@@ -37,9 +37,16 @@ public class EnemyMove : MonoBehaviour
             // otherwise on the ground, travel at a slower speed on the ground
             transform.Translate(Vector3.forward * speed);
         }
-       
-    }
 
+
+        // checks if the object has moved very far to the left, specifically past x = -15
+        if (transform.position.x < -15)
+        {
+            // if yes, destroy the object
+            Destroy(gameObject);
+        }
+
+    }
     //checks for collisions
     private void OnCollisionEnter(Collision collision)
     {
