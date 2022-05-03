@@ -9,6 +9,7 @@ TagManager:
   - Target
   - Platform
   - Powerup
+  - Tree
   layers:
   - Default
   - TransparentFX

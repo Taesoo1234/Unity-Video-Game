@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     {
         // repeat the process 'SpawnRandomEnemy' while accounting for a randomly generated spawn delay
         // and the spawn interval
-        InvokeRepeating("SpawnRandomEnemy", GenerateSpawnDelay(), spawnInterval);
+        InvokeRepeating("SpawnRandomEnemy", spawnInterval, GenerateSpawnDelay());
     }
 
     
