@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.075
-  platformspeed: 0.025
+  platformspeed: 0.075
   isOnPlatform: 0
 --- !u!1 &2527652870893242699
 GameObject:

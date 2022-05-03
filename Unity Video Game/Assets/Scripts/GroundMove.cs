@@ -18,6 +18,7 @@ public class GroundMove : MonoBehaviour
         transform.Translate(Vector3.left * speed) ;
 
         // checks if the object has moved very far to the left, specifically past x = 15
+        // and has the tag "Tree"
         if (transform.position.x < -15 && gameObject.CompareTag("Tree"))
         {
             // if yes, destroy the object

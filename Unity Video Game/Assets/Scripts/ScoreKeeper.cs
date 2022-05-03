@@ -8,24 +8,19 @@ public class ScoreKeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (score > 15)
-        {
-            Debug.Log("You Win!");
-        }
-    }
-    
-    void OnTriggerEnter(Collider Bullet)
-    {
-        if(Bullet.transform.tag == "Target")
-        {
-            score = score + 1;
-        }
 
     }
+
+
+    public void IncreaseScore()
+    {
+        score = score + 1;
+        Debug.Log(score);
+    }   
 }
