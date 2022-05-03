@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
         // the gravity is multiplied by the float 'gravity Modifier'
         Physics.gravity *= gravityModifier;
 
-        // gameOver and has Powerup are both set to false
-        gameOver = false;
-        hasPowerup = false;
     }
 
     // Update is called once per frame
@@ -63,18 +60,6 @@ public class PlayerController : MonoBehaviour
         {
         
         }
-
-        // checks if the bool hasPowerup is true
-        if (hasPowerup = true)
-        {
-            //if true, increase the jumpForce to 750
-            jumpForce = 750;
-        }
-        else
-        {
-            //if false, set the jumpForce to the default 600
-            jumpForce = 600;
-        }
     }
 
     //checks for collisions
@@ -87,11 +72,30 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
 
+        // if the collision is with an object with tag 'Ground'
+        // and hasPowerup = True;
+        // make the isOnGround bool true
+        // increase jumpForce to 750
+        if (collision.gameObject.CompareTag("Ground") && hasPowerup)
+        {
+            isOnGround = true;
+            jumpForce = 750;
+        }
         // if the collision is with an object with tag 'platform',
         // make the isOnGround bool true
         if (collision.gameObject.CompareTag("Platform"))
         {
             isOnGround = true;
+        }
+
+        // if the collision is with an object with tag 'platform'
+        // and hasPowerup = True;
+        // make the isOnGround bool true
+        // increase jumpForce to 750
+        if (collision.gameObject.CompareTag("Platform") && hasPowerup)
+        {
+            isOnGround = true;
+            jumpForce = 750;
         }
 
         // if the collision is with an object with tag 'Enemy'
@@ -109,18 +113,21 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over");
             gameOver = true;
         }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
         // if the collision is with an object with tag 'Target'
         // makes the hasPowerup bool true
+        // destroys the powerup gameObject
         // starts the coroutine to countdown the duration of the powerup
-        if (collision.gameObject.CompareTag("Powerup"))
+        if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            //Destroy(other.gameObject);
+            Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
-
     IEnumerator PowerupCountdownRoutine()
     {
         //wait 5 seconds
@@ -128,6 +135,8 @@ public class PlayerController : MonoBehaviour
 
         // make the hasPowerup bool false
         hasPowerup = false;
+
+        jumpForce = 600;
     }
 }
     
