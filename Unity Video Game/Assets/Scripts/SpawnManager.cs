@@ -12,18 +12,18 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
 
     // the floats that determine the minimum and maximum delay between spawns
-    public float MinSpawnDelay = 2;
-    public float MaxSpawnDelay = 4;
+    public float MinSpawnInterval = 2;
+    public float MaxSpawnInterval = 4;
 
-    // the interval between spawns
-    public float spawnInterval = 3.5f;
+    // the delay at the start before spawns
+    public float spawnDelay= 3.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         // repeat the process 'SpawnRandomEnemy' while accounting for a randomly generated spawn delay
         // and the spawn interval
-        InvokeRepeating("SpawnRandomEnemy", spawnInterval, GenerateSpawnDelay());
+        InvokeRepeating("SpawnRandomEnemy", spawnDelay, GenerateSpawnDelay());
     }
 
     
@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
     private float GenerateSpawnDelay()
     {
         // creates a random value that determines the delay between enemy spawns
-        float SpawnDelay = Random.Range(MinSpawnDelay, MaxSpawnDelay);
+        float SpawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
         return SpawnDelay;
     }
 

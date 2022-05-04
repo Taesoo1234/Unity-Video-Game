@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
             // if yes, destroys the target and destroys the bullet
             Destroy(gameObject);
             Destroy(other.gameObject);
-            gameObject.BroadcastMessage("IncreaseScore");
+            gameObject.SendMessageUpwards("IncreaseScore");
         }
         else
         {

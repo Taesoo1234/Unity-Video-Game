@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour
     // bools that check if the game is in a game-over state and if the player has a powerup
     public bool gameOver = false;
     public bool hasPowerup = false;
+
+    //A private reference to the animator
+    private Animator playerAnim;
+
+    //An asset that shows when the player has a powerup
+    public GameObject powerupIndicator;
+
     void Start()
     {
         // creates a rigidbody component called playerRb
@@ -39,8 +46,9 @@ public class PlayerController : MonoBehaviour
         
         
 
-        // checks if the space key is pressed, and if the isOnGround bool is true
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        // checks if the space key is pressed, and if the isOnGround bool is true and
+        // if the player is not in a gameover state
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             // if both conditions are satisfied, make the player jump by adding force vertically
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -49,14 +57,17 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
 
-        // checks if the player has pressed the shoot(z) button
-        if (Input.GetKeyDown(KeyCode.Z))
+        // checks if the player has pressed the shoot(z) button and is not in a gameover state
+        if (Input.GetKeyDown(KeyCode.Z) && !gameOver)
         {
             // if yes, then instantiate a prefab of the projectile with an offset of up .45, right 1.15.
             //Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation);
             GameObject go = Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation) as GameObject;
             go.transform.parent = GameObject.Find("Scorekeeper").transform;
         }
+
+        // makes the powerup indicator continously go behind the player
+        powerupIndicator.transform.position = transform.position + new Vector3(-1, 1, 0);
     }
 
     //checks for collisions
@@ -101,6 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            Destroy(gameObject);
         }
 
         // if the collision is with an object with tag 'Target'
@@ -109,6 +121,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            Destroy(gameObject);
         }
     }
 
@@ -117,11 +130,13 @@ public class PlayerController : MonoBehaviour
         // if the collision is with an object with tag 'Target'
         // makes the hasPowerup bool true
         // destroys the powerup gameObject
+        // spawns the powerup indicator
         // starts the coroutine to countdown the duration of the powerup
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
             Destroy(other.gameObject);
+            powerupIndicator.gameObject.SetActive(true);
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
@@ -133,6 +148,10 @@ public class PlayerController : MonoBehaviour
         // make the hasPowerup bool false
         hasPowerup = false;
 
+        // removes the powerup indicator
+        powerupIndicator.gameObject.SetActive(false);
+
+        // returns the jump force to the normal amount
         jumpForce = 600;
     }
 }
