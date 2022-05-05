@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGMountainMove : MonoBehaviour
+public class BackgroundLoop : MonoBehaviour
 {   // startPos is the value for the starting position of the mountain,
     // and is where the mountain will be moved back to after going past the
     // player to give the looping effect

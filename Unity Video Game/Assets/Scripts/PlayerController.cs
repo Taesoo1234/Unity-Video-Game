@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && !gameOver)
         {
             // if yes, then instantiate a prefab of the projectile with an offset of up .45, right 1.15.
-            //Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation);
+            // and make the object a child of the object 'scorekeeper'
             GameObject go = Instantiate(projectilePrefab, transform.position + (Vector3.up * 0.45f) + (Vector3.right * 1.15f), projectilePrefab.transform.rotation) as GameObject;
             go.transform.parent = GameObject.Find("Scorekeeper").transform;
         }
