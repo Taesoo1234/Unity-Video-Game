@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreKeeper : MonoBehaviour
 {
     // the float that is the current score of the player
     public float score = 0;
-    public Text CurrentScore;
+    public TextMeshPro CurrentScore;
     // Start is called before the first frame update
     void Start()
     {

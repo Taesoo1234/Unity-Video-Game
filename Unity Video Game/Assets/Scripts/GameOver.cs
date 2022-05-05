@@ -13,10 +13,12 @@ public class GameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // checks if the gameobject 'Player' has been deleted
         if (GameObject.Find("Player") == null)
         {
-
-            transform.position = new Vector3(5, 5, 1);
+            // if  yes, then move to the new vector3 position
+            //(to be visible to the player
+            transform.position = new Vector3(5, 6, 1);
         }
     }
 }
