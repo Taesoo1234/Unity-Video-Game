@@ -12,10 +12,11 @@ public class BackgroundLoop : MonoBehaviour
     public float speed = 20;
     private float repeatWidth;
     // Start is called before the first frame update
+
     void Start()
     {
         // this logs the starting position of the mountain into the variable,
-        // and will be referenced to where the mountain will be teleported into
+        // and will be referenced to where the mountain will be teleported to
         startPos = transform.position;
         repeatWidth = GetComponent<BoxCollider>().size.x;
     }
@@ -28,7 +29,7 @@ public class BackgroundLoop : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * speed);
 
         // this checks to see if the mountain has moved far enough left,
-        // specifically 100 units to the left
+        // specifically past the length of the entire box collider
         if (transform.position.x < startPos.x - repeatWidth)
         {
             // if it is true, then the mountain will be moved back to the starting position

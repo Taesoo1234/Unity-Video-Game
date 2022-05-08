@@ -8,6 +8,7 @@ public class PlatformMove : MonoBehaviour
 
     // the speed of the object
     public float speed;
+
     // Start is called before the first frame update
     void Start()
     {

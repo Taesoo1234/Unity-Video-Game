@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// the powerupmanager also uses the same script despite this scrip being intended to spawn enemys, 
+// as the powerupmanager's intended behavior is identical between with the spawnmanager
+
 public class SpawnManager : MonoBehaviour
 {
     // the floats that determine the minimum and maximum height that the objects can spawn

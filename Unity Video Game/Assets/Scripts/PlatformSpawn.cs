@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlatformSpawn : MonoBehaviour
 {
-    // the powerup manager also uses the same script despite being intended to spawn powerups, 
-    // as the script's intended behavior is identical between the two spawnmanagers
 
     // the object the spawnmanager will use to create clones of
     public GameObject[] PlatformPrefabs;

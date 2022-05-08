@@ -6,6 +6,7 @@ public class GroundMove : MonoBehaviour
 {
     // the speed of the object
     public float speed;
+
     void Start()
     {
         
@@ -16,14 +17,6 @@ public class GroundMove : MonoBehaviour
     {
         // makes the enemy move right, velcoity is determined by the speed variable
         transform.Translate(Vector3.left * speed) ;
-
-        // checks if the object has moved very far to the left, specifically past x = 15
-        // and has the tag "Tree"
-        if (transform.position.x < -15 && gameObject.CompareTag("Tree"))
-        {
-            // if yes, destroy the object
-            Destroy(gameObject);
-        }
     }
 }
 

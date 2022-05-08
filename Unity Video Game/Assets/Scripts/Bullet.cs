@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         // The velocity is determined by the time and the speed
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 
-        // destroys the bullet after the position is transformed enough that it goes past x = 16 (aka right)
+        // destroys the bullet after the position is transformed enough that it goes past x = 16 (aka far right)
         if (transform.position.x > 16)
         {
             Destroy(gameObject);
@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Target"))
         {
             // if yes, destroys the target and destroys the bullet
+            // sends a message to the parent object called "IncreaseScore"
             Destroy(gameObject);
             Destroy(other.gameObject);
             gameObject.SendMessageUpwards("IncreaseScore");
