@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// powerup gets its own movescript due to having a different rotation compared to other objects
 public class PowerupMove : MonoBehaviour
 {
-    // powerup gets its own movescript due to having a different rotation compared to other objects
-
     // the speed of the object
     public float speed;
 

@@ -11,13 +11,14 @@ public class BackgroundLoop : MonoBehaviour
     private Vector3 startPos;
     public float speed = 20;
     private float repeatWidth;
-    // Start is called before the first frame update
 
+    // Start is called before the first frame update
     void Start()
     {
-        // this logs the starting position of the mountain into the variable,
-        // and will be referenced to where the mountain will be teleported to
+        // this logs the starting position of the mountain into the variable 'startPos'
         startPos = transform.position;
+
+        // the variable repeatWidth is the x length of the box collider of the object
         repeatWidth = GetComponent<BoxCollider>().size.x;
     }
 

@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     // the float speed is the speed at which the bullet travels, and being
     // public allows it to be changed on the fly in the editor
     public float speed = 40.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class Bullet : MonoBehaviour
             Destroy(other.gameObject);
             gameObject.SendMessageUpwards("IncreaseScore");
         }
+
         else
         {
             // if no, destroy the bullet and do nothing else

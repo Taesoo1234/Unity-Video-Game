@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Enemy gets its own script because its rotation is different compared to other objects
+// Enemy and target both share the same script as they have the same intended behavior
 public class EnemyMove : MonoBehaviour
 {
     // the speed of the object on the ground
@@ -22,8 +24,6 @@ public class EnemyMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    // Enemy gets its own script because its rotation is different compared to other objects
-    // Enemy and target both share the same script as they have the same intended behavior
     void Update()
     {
         // checks if the enemy is on the platform
@@ -32,6 +32,7 @@ public class EnemyMove : MonoBehaviour
             // if true, match the speed of the platform so that it doesnt fall off
             transform.Translate(Vector3.forward * platformspeed);
         }
+
         else
         {
             // otherwise on the ground, travel at a slower speed on the ground
@@ -47,6 +48,7 @@ public class EnemyMove : MonoBehaviour
         }
 
     }
+
     //checks for collisions
     private void OnCollisionEnter(Collision collision)
     {

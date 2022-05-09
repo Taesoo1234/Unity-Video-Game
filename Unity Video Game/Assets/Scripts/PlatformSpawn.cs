@@ -51,6 +51,8 @@ public class PlatformSpawn : MonoBehaviour
 
         // create a vector3 postion by accounting for spawnPosy, determines its spawn position
         Vector3 randomPos = new Vector3(30, spawnPosY, 0);
+
+        // return the value
         return randomPos;
     }
 }

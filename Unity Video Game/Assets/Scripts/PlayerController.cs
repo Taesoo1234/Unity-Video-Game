@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     // the rigidbody of the player that can be used for physics
     private Rigidbody playerRb;
 
@@ -27,6 +25,7 @@ public class PlayerController : MonoBehaviour
     //An asset that shows when the player has a powerup
     public GameObject powerupIndicator;
 
+    // Start is called before the first frame update
     void Start()
     {
         // creates a rigidbody component called playerRb
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         // if the collision is with an object with tag 'Target'
@@ -116,7 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -135,6 +134,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
+
     IEnumerator PowerupCountdownRoutine()
     {
         // wait 5 seconds

@@ -37,6 +37,8 @@ public class SpawnManager : MonoBehaviour
         // maximum and minimum public variables in line 8 and 9
         float spawnPosY = Random.Range(MinVerticalSpawnRange, MaxVerticalSpawnRange);
         Vector3 randomPos = new Vector3(17, spawnPosY, 0);
+
+        // return the value
         return randomPos;
     }
 
@@ -44,6 +46,8 @@ public class SpawnManager : MonoBehaviour
     {
         // creates a random value that determines the delay between enemy spawns
         float SpawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
+
+        // return the value
         return SpawnDelay;
     }
 
