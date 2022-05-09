@@ -17,6 +17,7 @@ public class PlatformSpawn : MonoBehaviour
     // the minimum and maximum height that the platforms can spawn at
     public float MinVerticalSpawnRange = 2;
     public float MaxVerticalSpawnRange = 6;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +41,7 @@ public class PlatformSpawn : MonoBehaviour
         Instantiate(PlatformPrefabs[platformIndex], GenerateSpawnPosition(), PlatformPrefabs[platformIndex].transform.rotation);
     }
 
-    // generate a vector3 position to replace (GenerateSpawnPosition) in line 30
+    // generate a vector3 position to replace (GenerateSpawnPosition) in line 41
     private Vector3 GenerateSpawnPosition()
     {
         // create a float called spawnposY to determine

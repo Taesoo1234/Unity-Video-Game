@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false;
     public bool hasPowerup = false;
 
-    //A private reference to the animator
-    private Animator playerAnim;
-
     //An asset that shows when the player has a powerup
     public GameObject powerupIndicator;
 
@@ -43,9 +40,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-
         // checks if the space key is pressed, and if the isOnGround bool is true and
         // if the player is not in a gameover state
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
@@ -89,6 +83,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             jumpForce = 750;
         }
+
         // if the collision is with an object with tag 'platform',
         // make the isOnGround bool true
         if (collision.gameObject.CompareTag("Platform"))
@@ -142,7 +137,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PowerupCountdownRoutine()
     {
-        //wait 5 seconds
+        // wait 5 seconds
         yield return new WaitForSeconds(5);
 
         // make the hasPowerup bool false

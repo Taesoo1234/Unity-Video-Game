@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
     {
         // repeat the process 'SpawnRandomEnemy' while accounting for a randomly generated spawn delay
         // and the spawn interval
-        InvokeRepeating("SpawnRandomEnemy", spawnDelay, GenerateSpawnDelay());
+        InvokeRepeating("SpawnRandomEnemy", spawnDelay, GenerateSpawnInterval());
     }
 
     
@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
-    private float GenerateSpawnDelay()
+    private float GenerateSpawnInterval()
     {
         // creates a random value that determines the delay between enemy spawns
         float SpawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
@@ -49,7 +49,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        // create prefabs of the enemy using the integer 'enemyIndex', while using 'GenerateSpawnPosition'
+        // instantiate prefabs of the enemy using the integer 'enemyIndex', while using 'GenerateSpawnPosition'
         // to determine the spawning position
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         Instantiate(enemyPrefabs[enemyIndex], GenerateSpawnPosition(), enemyPrefabs[enemyIndex].transform.rotation);
